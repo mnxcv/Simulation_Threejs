@@ -5,7 +5,7 @@ Simulation with Three.js
 
 N = 100
 
-[Normal version] (https://mnxcv.github.io/Simulation_Threejs/Three.js%20Project/ALOHA_simulation/n_body_normal.html)
+[Normal version](https://mnxcv.github.io/Simulation_Threejs/Three.js%20Project/ALOHA_simulation/n_body_normal.html)
 
 [Change Gravity Force to "F = GMm/r"] : https://mnxcv.github.io/Simulation_Threejs/Three.js%20Project/ALOHA_simulation/n_body_extra.html
 
