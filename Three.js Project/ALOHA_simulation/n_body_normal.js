@@ -19,17 +19,20 @@ class Body{
 //parameter
 const scale = 0.001;
 const softening = 20;
-const gravity_const = 10000000000000;
+const gravity_const = 50000000000000;
 const camera_loc = new THREE.Vector3(0, 0, 100);
-const Body_rad = 7;
-const randposmin = -60000;
-const randposmax = 60000;
-const Body_cnt = 100;
+const Body_rad = 13;
+const randposmin = -400000;
+const randposmax = 400000;
+const Body_cnt = 200;
 const wd = window.innerWidth;
 const hg = window.innerHeight;
-const Body_color = 0x2e7ee7;
-const material = new THREE.MeshStandardMaterial
+const Body_color = 0xffffff;
+const material = new THREE.MeshPhysicalMaterial
     ({color : Body_color});
+material.clearcoatRoughness = 0.5;
+material.ior = 1;
+material.sheen = 1.0;
 const fps = 60; //real constant
 const dt = 1/fps; // real constant
 //scene, camera, renderer
