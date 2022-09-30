@@ -44,13 +44,15 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(wd, hg);
 document.body.appendChild(renderer.domElement);
+
+let controls = new THREE.TrackballControls( camera, renderer.domElement);
 //light(disable this time)
 
 const light1 = new THREE.PointLight(0xffffff, 0.7, 20000, 0.99);
 light1.position.set(1000, 1000, 1000);
 const light2 = new THREE.PointLight(0x999999, 0.7, 20000, 0.99);
 light2.position.set(-1000, -1000, -1000);
-scene.add(light1);
+scene.add(light1);``
 scene.add(light2);
 
 //function(initial)
@@ -169,6 +171,7 @@ Bodies_print(body_array);
 function animate(){
     requestAnimationFrame(animate);
     rep(body_array);
+    controls.update();
     renderer.render(scene, camera);
 }
 animate();
