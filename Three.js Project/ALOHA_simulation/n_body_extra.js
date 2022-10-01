@@ -18,18 +18,21 @@ class Body{
 }
 //parameter
 const scale = 0.001;
-const softening = 5;
-const gravity_const = 10000000000;
+const softening = 20;
+const gravity_const = 500000000;
 const camera_loc = new THREE.Vector3(0, 0, 100);
-const Body_rad = 7;
-const randposmin = -200000;
-const randposmax = 200000;
-const Body_cnt = 100;
+const Body_rad = 13;
+const randposmin = -400000;
+const randposmax = 400000;
+const Body_cnt = 200;
 const wd = window.innerWidth;
 const hg = window.innerHeight;
-const Body_color = 0x2e7ee7;
-const material = new THREE.MeshStandardMaterial
+const Body_color = 0xffffff;
+const material = new THREE.MeshPhysicalMaterial
     ({color : Body_color});
+material.clearcoatRoughness = 0.5;
+material.ior = 1;
+material.sheen = 1.0;
 const fps = 60; //real constant
 const dt = 1/fps; // real constant
 //scene, camera, renderer
@@ -41,13 +44,15 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(wd, hg);
 document.body.appendChild(renderer.domElement);
+
+let controls = new THREE.TrackballControls( camera, renderer.domElement);
 //light(disable this time)
 
 const light1 = new THREE.PointLight(0xffffff, 0.7, 20000, 0.99);
 light1.position.set(1000, 1000, 1000);
 const light2 = new THREE.PointLight(0x999999, 0.7, 20000, 0.99);
 light2.position.set(-1000, -1000, -1000);
-scene.add(light1);
+scene.add(light1);``
 scene.add(light2);
 
 //function(initial)
@@ -166,6 +171,7 @@ Bodies_print(body_array);
 function animate(){
     requestAnimationFrame(animate);
     rep(body_array);
+    controls.update();
     renderer.render(scene, camera);
 }
 animate();
